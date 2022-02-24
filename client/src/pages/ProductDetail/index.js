@@ -38,7 +38,7 @@ const images = data.photos.map((url) => ({original:url}));
       </Text>
       </Center>
         <Box margin="10">
-            <ImageGallery items={images} showThumbnails={false}></ImageGallery>
+            <ImageGallery items={images} showThumbnails={false} sizes="120px, 193px, 278px"></ImageGallery>
         </Box>
         <Center>
             <Button colorScheme="teal" size="lg">Add to basket</Button>
