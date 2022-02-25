@@ -3,8 +3,12 @@ import {Flex, Box, Heading, FormControl, FormLabel, Input, Button, Alert} from '
 import {useFormik} from 'formik';
 import validationSchema from './validations';
 import {fetchRegister} from '../../../api';
+import {useAuth} from '../../../contexts/AuthContext';
 
 function Signup() {
+
+const {login} = useAuth();
+
   const formik = useFormik({
     initialValues: {
       email:"",
@@ -14,7 +18,11 @@ function Signup() {
     validationSchema,
     onSubmit: async(values,bag) => {
       try{
-        const registerResponse = await fetchRegister({email: values.email, password:values.password});
+        const registerResponse = await fetchRegister({
+          email: values.email, 
+          password:values.password});
+
+          login(registerResponse);
         console.log(registerResponse);
 
       }catch(e){
@@ -31,7 +39,6 @@ function Signup() {
           </Box>
 
           <Box my={5}>
-
             {
               formik.errors.general && (
                 <Alert status='error'>
@@ -40,7 +47,6 @@ function Signup() {
                 </Alert>
               )
             }
-
           </Box>
 
           <Box my={5} textAlign="left">
