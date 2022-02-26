@@ -8,6 +8,11 @@ import {useAuth} from '../../../contexts/AuthContext';
 function Signup() {
 
 const {login} = useAuth();
+// const handleLogin = async () => {
+//   await login(() => {
+//     window.location.href = '/profile';
+//   });
+// };
 
   const formik = useFormik({
     initialValues: {
@@ -28,7 +33,8 @@ const {login} = useAuth();
       }catch(e){
         bag.setErrors({general:e.response.data.message});
       }
-    }
+    },
+    
     })
   return (
     <div>

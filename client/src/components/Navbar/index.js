@@ -38,9 +38,15 @@ function Navbar() {
           }
           {
             loggedIn && (
+              <>
               <Link to="profile">
                 <Button colorScheme="purple">Profile</Button>
               </Link>
+               <Link to="logout">
+               <Button colorScheme="purple">Logout</Button>
+             </Link>
+              </>
+              
             )
           }
           </div>

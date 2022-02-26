@@ -1,10 +1,17 @@
-import React from 'react';
 import {useAuth} from '../../contexts/AuthContext';
-import {Tag, Text, Divider, Avatar,Box,Icon, Center  } from '@chakra-ui/react';
+import {Tag, Text, Divider, Avatar,Box,Icon, Center, Button  } from '@chakra-ui/react';
+
 
 
 function Profile() {
-    const {user} = useAuth();
+   
+    const {user, logout} = useAuth();
+    
+    const handleLogout = async () => {
+       await logout(() => {
+        window.location.href = '/';
+       });
+    };
   return (
     <div>
         <Center mb="3">
@@ -13,19 +20,23 @@ function Profile() {
         
         <Divider/>
         <Box>
+            {/* <code>
+                {JSON.stringify(user)}
+            </code> */}
             <Center>
-                <Icon viewBox='0 0 200 200' color='purple.500'>
-                <path fill='currentColor' d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'/>
-                </Icon> 
-                <Tag mt={3} mr="100" fontStyle="italic">Role: {user.role} </Tag> 
-            </Center> 
+                <Tag mb="2" mt="2">Role: {user.role}</Tag>
+            </Center>
             <Center>
-                <Icon viewBox='0 0 200 200' color='purple.500'>
-                <path fill='currentColor' d='M 100, 100 m -75, 0 a 75,75 0 1,0 150,0 a 75,75 0 1,0 -150,0'/>
-                </Icon> 
-                <Tag mt={2} fontStyle="italic">Email: {user.email}</Tag>      
+                <Tag>Email: {user.email}</Tag>
+            </Center>
+            
+            <Center>
+                <Button colorScheme="purple" variant="solid" mt={8} onClick={handleLogout}>
+                    Logout
+                </Button>
             </Center>
         </Box>
+       
     </div>
   )
 }
