@@ -42,7 +42,7 @@ function Navbar() {
               <Link to="profile">
                 <Button colorScheme="purple">Profile</Button>
               </Link>
-               <Link to="logout">
+               <Link to="/">
                <Button colorScheme="purple">Logout</Button>
              </Link>
               </>

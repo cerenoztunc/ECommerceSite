@@ -28,6 +28,7 @@ const {login} = useAuth();
           password:values.password});
 
           login(registerResponse);
+          window.location.href = '/profile';
         console.log(registerResponse);
 
       }catch(e){

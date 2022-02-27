@@ -2,7 +2,8 @@ import './App.css';
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Navigate
 } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Signin from './pages/Auth/Signin';
@@ -23,8 +24,12 @@ function App() {
           <Route path="/product/:product_id" element={<ProductDetail/>} />
           <Route path="/signin" element={<Signin/>} /> 
           <Route path="/signup" element={<Signup/>} /> 
-          <Route path="/profile" element={<Profile/>} /> 
-          </Routes>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route
+          path="*"
+          element={<Navigate to="/" />}/>
+          </Routes>          
+      
         </div>
         
       </div>
