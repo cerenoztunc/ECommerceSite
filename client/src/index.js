@@ -29,13 +29,15 @@ const queryClient = new QueryClient({
 ReactDOM.render(
 
     <QueryClientProvider client={queryClient}>     
-      <ChakraProvider>
+      
         <AuthProvider>
           <BasketProvider>
+          <ChakraProvider>
             <App />
+            </ChakraProvider>
           </BasketProvider>
         </AuthProvider>
-      </ChakraProvider>
+      
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>,
   document.getElementById('root')
