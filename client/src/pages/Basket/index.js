@@ -12,8 +12,9 @@ function Basket() {
       {items.length < 1 && <Alert status="warning">You have not any items in your basket!</Alert>}
       {
           items.length > 0 && <div>
+              <Text fontSize={35} color="purple" fontFamily="fantasy">Basket</Text>
             
-                    <Grid templateColumns='repeat(4, 1fr)' gap={4}>
+                    <Grid templateColumns='repeat(4, 1fr)' gap={4} mt="5">
                 {
                     items.map((item) => (
                         <div>

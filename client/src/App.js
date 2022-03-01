@@ -12,6 +12,8 @@ import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
 import Profile from './pages/Profile';
 import Basket from './pages/Basket';
+import Error404 from './pages/Error404';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 function App() {
   return (
@@ -25,13 +27,12 @@ function App() {
           <Route path="/product/:product_id" element={<ProductDetail/>} />
           <Route path="/signin" element={<Signin/>} /> 
           <Route path="/signup" element={<Signup/>} /> 
-          <Route path="/profile" element={<Profile/>}/>
           <Route path="/basket" element={<Basket/>}/>
+          <Route path='/profile' element={<ProtectedRoute />}/>  
           <Route
           path="*"
-          element={<Navigate to="/" />}/>
-          </Routes>          
-      
+          element={<Error404 to="/" />}/>       
+        </Routes>
         </div>
         
       </div>
