@@ -3,17 +3,16 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate
 } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Signin from './pages/Auth/Signin';
 import Signup from './pages/Auth/Signup';
 import Products from './pages/Products';
 import ProductDetail from './pages/ProductDetail';
-import Profile from './pages/Profile';
 import Basket from './pages/Basket';
 import Error404 from './pages/Error404';
 import ProtectedRoute from './pages/ProtectedRoute';
+import AdminRoute from './pages/AdminRoute';
 
 function App() {
   return (
@@ -28,7 +27,8 @@ function App() {
           <Route path="/signin" element={<Signin/>} /> 
           <Route path="/signup" element={<Signup/>} /> 
           <Route path="/basket" element={<Basket/>}/>
-          <Route path='/profile' element={<ProtectedRoute />}/>  
+          <Route path='/profile' element={<ProtectedRoute />}/>   
+          <Route path='/admin' element={<AdminRoute />} />   
           <Route
           path="*"
           element={<Error404 to="/" />}/>       

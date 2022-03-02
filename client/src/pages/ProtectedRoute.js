@@ -7,7 +7,15 @@ import {
 
 function ProtectedRoute() {
     const {loggedIn} = useAuth();
-  return  loggedIn ? <Profile/> : <Navigate to="/" />;
+
+    if(loggedIn){
+      return <Profile/>
+     
+    }
+    else{
+      <Navigate to="/" />;
+    }
+    
 }
 
 export default ProtectedRoute;
