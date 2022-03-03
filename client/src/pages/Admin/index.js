@@ -6,6 +6,7 @@ import Home from './Home';
 import Orders from './Orders';
 import Products from './Products';
 import ProductDetail from './ProductDetail';
+import NewProduct from './Products/new';
 
 function Admin() {
     let to = "/admin/*";
@@ -32,6 +33,7 @@ function Admin() {
                 <Route path='/orders' element={<Orders/>}></Route>
                 <Route path='/products' element={<Products/>}></Route>
                 <Route path='/products/:product_id' element={<ProductDetail/>}></Route>
+                <Route path='/products/new' element={<NewProduct/>}></Route>
             </Routes>
         </Box>
     </div>
