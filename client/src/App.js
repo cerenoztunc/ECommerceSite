@@ -14,6 +14,7 @@ import Error404 from './pages/Error404';
 import ProtectedRoute from './pages/ProtectedRoute';
 import AdminRoute from './pages/AdminRoute';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,7 +29,8 @@ function App() {
           <Route path="/signup" element={<Signup/>} /> 
           <Route path="/basket" element={<Basket/>}/>
           <Route path='/profile' element={<ProtectedRoute />}/>   
-          <Route path='/admin' element={<AdminRoute />} />   
+          <Route path='/admin/*' element={<AdminRoute />} />   
+          
           <Route
           path="*"
           element={<Error404 to="/" />}/>       
