@@ -1,18 +1,17 @@
 import React from 'react';
-import {Link,NavLink, Routes, Route, useMatch, useLocation, BrowserRouter} from "react-router-dom";
+import {Link,NavLink, Routes, Route, useMatch} from "react-router-dom";
 import './styles.css';
 import {Box} from '@chakra-ui/react';
 import Home from './Home';
 import Orders from './Orders';
 import Products from './Products';
+import ProductDetail from './ProductDetail';
 
 function Admin() {
     let to = "/admin/*";
     const match = useMatch(to);
 
-
-    console.log(match);
-  return (
+    return (
     <div>
       <nav>
           <ul className='admin-menu'>
@@ -32,8 +31,8 @@ function Admin() {
                 <Route exact path='/home' element={<Home/>}></Route>
                 <Route path='/orders' element={<Orders/>}></Route>
                 <Route path='/products' element={<Products/>}></Route>
+                <Route path='/products/:product_id' element={<ProductDetail/>}></Route>
             </Routes>
-        
         </Box>
     </div>
   )

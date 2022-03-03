@@ -1,12 +1,20 @@
 import {useMemo} from 'react';
-import {useQuery} from 'react-query';
-import {fetchProductList} from '../../../api';
+import {useQuery, useMutation, useQueryClient} from 'react-query';
+import {fetchProductList, deleteProduct} from '../../../api';
 
 import {Table, Popconfirm} from 'antd';
-import {color, Text} from '@chakra-ui/react';
+import {Text} from '@chakra-ui/react';
 import {Link} from 'react-router-dom';
 function Products() {
+  //bir vermek çekmek query işlemidir. bu yüzden ürünleri listelemek için useQuery kullandık..
  const {isLoading, isError, data, error} = useQuery('admin:products', fetchProductList);
+ //delete update işlemleri mutation(manipülasyon) işlemleridir. bu yüzden delete için useMutation kullandık..
+ const deleteMutation = useMutation(deleteProduct, {
+    //ürün silinince yukarıdaki useQuery'de verdiğimiz ismi kullanarak baştan render edilmesini sağladık.. 
+    onSuccess : () => queryClient.invalidateQueries('admin:products')
+ });
+
+ const queryClient = useQueryClient();
 
 //table items
  const columns = useMemo(() => {
@@ -35,7 +43,14 @@ function Products() {
           <Popconfirm
             title="Are you sure?"
             onConfirm={() => {
-              alert("Deleted!");
+              deleteMutation.mutate(record._id, {
+                onSuccess: () => {
+                  alert("Deleted!");
+                },
+                onError: () => {
+                  alert("Failed! Please try again.")
+                }
+              })
             }}
             onCancel={() => console.log('canseled')}
             okText="Yes"
