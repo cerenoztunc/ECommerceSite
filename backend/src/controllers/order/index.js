@@ -38,6 +38,21 @@ const List = async (req, res, next) => {
     next(e);
   }
 };
+const Get = async (req, res, next) => {
+	const { order_id } = req.params;
+
+	if (!order_id) {
+		return next(Boom.badRequest("Missing paramter (:order_id)"));
+	}
+
+	try {
+		const order = await Order.findById(order_id).populate('items');
+
+		res.json(order);
+	} catch (e) {
+		next(e);
+	}
+};
 
 const GetMyOrders = async (req, res, next) => {
   const { user_id } = req.payload;
@@ -55,4 +70,5 @@ export default {
   Create,
   List,
   GetMyOrders,
+  Get,
 };

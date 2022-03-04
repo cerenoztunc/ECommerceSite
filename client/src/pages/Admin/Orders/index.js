@@ -1,9 +1,11 @@
 import React from 'react';
 
+import {NavLink, Link} from 'react-router-dom';
+
 import {useQuery} from 'react-query';
 import {fetchOrders} from '../../../api';
 
-import {Table, Thead, Tbody,Tr,Th,Td,TableCaption,Text,Link } from '@chakra-ui/react';
+import {Table, Thead, Tbody,Tr,Th,Td,TableCaption,Text } from '@chakra-ui/react';
 
 function Orders() {
   const {isLoading, isError, data, error} = useQuery('admin:orders', fetchOrders);
@@ -17,6 +19,7 @@ function Orders() {
   }
 
   console.log(data);
+
   return (
     <div>
       <Text fontSize="2xl" p={5}>Orders</Text>
@@ -34,9 +37,9 @@ function Orders() {
         {
           data.map((item) => (
             <Tr key={item._id}>
-                <Td>{item.user.email}</Td>
-                <Td>{item.adress}</Td>
-                <Td isNumeric>{item.items.length}</Td>
+                <Td><NavLink to={`/admin/orders/${item._id}`}>{item.user.email}</NavLink></Td>
+                <Td><Link to={`/admin/orders/${item._id}`}>{item.adress}</Link></Td>
+                <Td isNumeric><Link to={`/admin/orders/${item._id}`}>{item.items.length}</Link></Td>
             </Tr>
           ))
         }

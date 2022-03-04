@@ -6,5 +6,12 @@ import Order from '../controllers/order';
 router.post('/', Order.Create);
 router.get('/', Order.List);
 router.get('/my-orders', Order.GetMyOrders);
+router.get(
+	"/:order_id",
+	// verifyAccessToken,
+	// grantAccess('readAny', 'product'),
+	// cache.route(),
+	Order.Get
+);
 
 export default router;
